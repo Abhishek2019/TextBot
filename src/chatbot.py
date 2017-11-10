@@ -2,7 +2,7 @@ import os
 import random
 import webbrowser
 from pygame import mixer
-import speech2text as s2t
+
 
 
 def file2list(filename):
@@ -13,8 +13,6 @@ def file2list(filename):
     for line in fr.readlines():
         flist.append(line.strip())
     return flist
-
-
 
 
 
@@ -38,12 +36,13 @@ while 1:
         os.system("espeak '"+robo+"'")
         print(robo)
 
+
     print("you : ", end="")
     human = input().strip()
 
 
 
-    if(human in ["play mp3","play something","play song"]):
+    if(human in file2list("../dataset/music.txt")):
         robo=random.choice(("Here comes list of songs :","Here comes list","choose your song"))
         os.system("espeak '"+robo+"'")
         print(robo)
