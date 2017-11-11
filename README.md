@@ -1,5 +1,4 @@
-# TextBot
-#[Currently runable in Linux system only]
+# TextBot [Currently runable in Linux system only]
 
 Program will run in background , and follow your commands
 
