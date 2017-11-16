@@ -5,3 +5,6 @@ play song please
 play mp3 song
 show song
 show list of songs
+play songs
+show list songs
+show mp3 list

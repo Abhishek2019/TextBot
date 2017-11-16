@@ -5,7 +5,7 @@ import webbrowser
 
 def file2list(filename):
 
-    flist=[]
+    flist = []
     fr = open(filename)
     for line in fr.readlines():
         flist.append(line.strip())
@@ -19,12 +19,12 @@ def write2file(filename,str):
     fr.write(str)
 
 
-def mp3gen():
+def filelistgen(str):
     fpath=[]
     fname=[]
     for root, dirs, files in os.walk('/home'):
         for filename in files:
-            if os.path.splitext(filename)[1] == ".mp3":
+            if os.path.splitext(filename)[1] == str :
 
                 fpath.append(os.path.join(root, filename))
                 fname.append(filename)
@@ -37,9 +37,9 @@ def playmusic(fpath,str):
     webbrowser.open(fpath[int(str)-1])
 
 
-def showsongslist():
+def showsongslist(filetype):
     no=1
-    fpath,fname=mp3gen()
+    fpath,fname=filelistgen(filetype)
     for mp3file in fname:
         print(str(no)+" "+mp3file)
         no+=1
@@ -70,17 +70,17 @@ while 1:
     if(human in file2list("../dataset/h_greeting_reply.txt")):
         robo=random.choice(("Thats Great so what would you like me to do?","Pleasure to hear that  so what would you like me to do?"))
         robospeak(robo)
-    elif("nice" in human.strip().split() or "good" in human.strip().split() or "fine" in human.strip().split()):
+    elif(("nice" in human.strip().split() or "good" in human.strip().split() or "fine" in human.strip().split()) and ("not" not in human.strip().split() or "no" not in human.strip().split() ) ):
         write2file("../dataset/h_greeting_reply.txt",human)
 
         robo=random.choice(("Thats Great so what would you like me to do?","Pleasure to hear that  so what would you like me to do?"))
         robospeak(robo)
 
     elif(human in ["run again"]):
-        robo=random.choice(("so what would you like me again to do?","would you like me to to execute any task?"))
+        robo=random.choice(("so what would you like me again to do ?","would you like me to to execute any task?"))
         robospeak(robo)
     else:
-        robo=random.choice(("It's ok don't get too depressed  so whatwould you like me to do?"))
+        robo= "Its ok do not get too depressed so what would you like me to do?"
         robospeak(robo)
 
 
@@ -91,7 +91,7 @@ while 1:
         robo=random.choice(("Here comes list of songs :","Here comes list","choose your song"))
         robospeak(robo)
 
-        fpath=showsongslist()
+        fpath=showsongslist(".mp3")
         human=humaninput()
         playmusic(fpath,human)
 
@@ -102,10 +102,12 @@ while 1:
         robo = random.choice(("Here comes list of songs :", "Here comes list", "choose your song"))
         robospeak(robo)
 
-        fpath=showsongslist()
+        fpath=showsongslist(".mp3")
         human=humaninput()
         playmusic(fpath,human)
 
+    elif():
+        pass
 
     elif(human in ["stop","bye","no"]):
         robo = random.choice(("Thank you","I will take your leave","Bye sir","It was nice meeting you"))

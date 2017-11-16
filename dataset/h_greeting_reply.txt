@@ -3,3 +3,6 @@ Thank you
 nice day
 fine
 nice
+good
+not good
+not fine
