@@ -92,6 +92,10 @@ while 1:
         robospeak(robo)
 
         fpath=showfilelist(".mp3")
+
+        print("\n");
+        print("Enter option number");
+
         human=humaninput()
         playfile(fpath,human)
 
@@ -103,6 +107,10 @@ while 1:
         robospeak(robo)
 
         fpath=showfilelist(".mp3")
+
+        print("\n");
+        print("Enter option number");
+
         human=humaninput()
         playfile(fpath,human)
 
@@ -111,6 +119,10 @@ while 1:
         robospeak(robo)
 
         fpath=showfilelist(".3gp")
+
+        print("\n");
+        print("Enter option number");
+
         human=humaninput()
         playfile(fpath,human)
 
@@ -122,10 +134,14 @@ while 1:
         robospeak(robo)
 
         fpath=showfilelist(".3gp")
+
+        print("\n");
+        print("Enter option number");
+
         human=humaninput()
         playfile(fpath,human)
 
-    elif(human in ["stop","bye","no"]):
+    elif(human in ["stop","bye","no","nothing"]):
         robo = random.choice(("Thank you","I will take your leave","Bye sir","It was nice meeting you"))
         robospeak(robo)
         break

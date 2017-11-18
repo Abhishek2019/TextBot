@@ -8,3 +8,4 @@ show list of songs
 play songs
 show list songs
 show mp3 list
+play song for me

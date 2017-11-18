@@ -6,3 +6,4 @@ nice
 good
 not good
 not fine
+i am fine
