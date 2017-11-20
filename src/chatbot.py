@@ -70,17 +70,19 @@ while 1:
     if(human in file2list("../dataset/h_greeting_reply.txt")):
         robo=random.choice(("Thats Great so what would you like me to do?","Pleasure to hear that  so what would you like me to do?"))
         robospeak(robo)
-    elif(("nice" in human.strip().split() or "good" in human.strip().split() or "fine" in human.strip().split()) and ("not" not in human.strip().split() or "no" not in human.strip().split() ) ):
+    elif(("nice" in human.strip().split() or "good" in human.strip().split() or "fine" in human.strip().split()) and ("not" not in human.strip().split() or "nothing" in human.strip().split())):
         write2file("../dataset/h_greeting_reply.txt",human)
 
         robo=random.choice(("Thats Great so what would you like me to do?","Pleasure to hear that  so what would you like me to do?"))
         robospeak(robo)
-
     elif(human in ["run again"]):
         robo=random.choice(("so what would you like me again to do ?","would you like me to to execute any task?"))
         robospeak(robo)
-    else:
+    elif("not" in human.strip().split() or "no" in human.strip().split()):
         robo= "Its ok do not get too depressed so what would you like me to do?"
+        robospeak(robo)
+    else:
+        robo="can't understand sorry could you repeat?"
         robospeak(robo)
 
 
@@ -127,13 +129,13 @@ while 1:
         playfile(fpath,human)
 
 
-    elif(("show" in human.strip().split() or "play" in human.strip().split()) and ("videos" in human.strip().split() or "video" in human.strip().split())):
+    elif(("show" in human.strip().split() or "play" in human.strip().split()) and ("videos" in human.strip().split() or "video" in human.strip().split() or "movie" in human.strip().split() or "movies" in human.strip().split())):
         write2file("../dataset/video.txt",human)
 
         robo = random.choice(("Here comes list of videos :", "Here comes video", "choose your song"))
         robospeak(robo)
 
-        fpath=showfilelist(".3gp")
+        fpath=showfilelist(".mp4")
 
         print("\n");
         print("Enter option number");

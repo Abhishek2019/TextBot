@@ -9,3 +9,5 @@ play songs
 show list songs
 show mp3 list
 play song for me
+play some songs
+plz play song

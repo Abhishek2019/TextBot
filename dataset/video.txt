@@ -3,3 +3,5 @@ play video
 play .mp4
 play .3gp
 shut up and play video for me
+shut up and play video dude
+play movie
