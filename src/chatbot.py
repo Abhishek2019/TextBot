@@ -37,13 +37,14 @@ def playfile(fpath,str):
     webbrowser.open(fpath[int(str)-1])
 
 
-def showfilelist(filetype):
-    no=1
+def showfilelist(filetype,fileno):
+
     fpath,fname=filelistgen(filetype)
+
     for filename in fname:
-        print(str(no)+" "+filename)
-        no+=1
-    return fpath
+        print(str(fileno)+" "+filename)
+        fileno+=1
+    return fpath,fileno
 
 
 def robospeak(str):
@@ -70,19 +71,21 @@ while 1:
     if(human in file2list("../dataset/h_greeting_reply.txt")):
         robo=random.choice(("Thats Great so what would you like me to do?","Pleasure to hear that  so what would you like me to do?"))
         robospeak(robo)
-    elif(("nice" in human.strip().split() or "good" in human.strip().split() or "fine" in human.strip().split()) and ("not" not in human.strip().split() or "nothing" in human.strip().split())):
+    elif(( "not" not in human.strip().split() or "nothing" not in human.strip().split()) and ("nice" in human.strip().split()) ):
         write2file("../dataset/h_greeting_reply.txt",human)
 
         robo=random.choice(("Thats Great so what would you like me to do?","Pleasure to hear that  so what would you like me to do?"))
         robospeak(robo)
+
     elif(human in ["run again"]):
         robo=random.choice(("so what would you like me again to do ?","would you like me to to execute any task?"))
         robospeak(robo)
-    elif("not" in human.strip().split() or "no" in human.strip().split()):
+
+    elif("not" in human.strip().split() or "no" in human.strip().split() or  "nothing" in human.strip().split()  or  "bad" in human.strip().split()):
         robo= "Its ok do not get too depressed so what would you like me to do?"
         robospeak(robo)
     else:
-        robo="can't understand sorry could you repeat?"
+        robo="can not understand sorry could you repeat?"
         robospeak(robo)
 
 
@@ -93,25 +96,25 @@ while 1:
         robo=random.choice(("Here comes list of songs :","Here comes list","choose your song"))
         robospeak(robo)
 
-        fpath=showfilelist(".mp3")
+        fpath,fno=showfilelist(".mp3",1)
 
-        print("\n");
-        print("Enter option number");
+        print("\n")
+        print("Enter option number")
 
         human=humaninput()
         playfile(fpath,human)
 
 
-    elif(("show" in human.strip().split() or "play" in human.strip().split()) and ("songs" in human.strip().split() or "song" in human.strip().split() or "mp3" in human.strip().split())):
+    elif(("show" in human.strip().split() or "play" in human.strip().split()) and ("songs" in human.strip().split() or "song" in human.strip().split() or "mp3" in human.strip().split() or "music" in human.strip().split())):
         write2file("../dataset/music.txt",human)
 
         robo = random.choice(("Here comes list of songs :", "Here comes list", "choose your song"))
         robospeak(robo)
 
-        fpath=showfilelist(".mp3")
+        fpath,fno=showfilelist(".mp3",1)
 
-        print("\n");
-        print("Enter option number");
+        print("\n")
+        print("Enter option number")
 
         human=humaninput()
         playfile(fpath,human)
@@ -120,13 +123,22 @@ while 1:
         robo=random.choice(("Here comes list of videos :","Here comes list","choose your video"))
         robospeak(robo)
 
-        fpath=showfilelist(".3gp")
+        allvideolist=[]
+        fpath,fno=showfilelist(".mp4",1)
 
-        print("\n");
-        print("Enter option number");
+        allvideolist.extend(fpath)
+        fpath,fno=showfilelist(".3gp",fno)
+        allvideolist.extend(fpath)
+
+
+        print("\n")
+        print("Enter option number")
 
         human=humaninput()
-        playfile(fpath,human)
+        playfile(allvideolist,human)
+
+        allvideolist=[]
+
 
 
     elif(("show" in human.strip().split() or "play" in human.strip().split()) and ("videos" in human.strip().split() or "video" in human.strip().split() or "movie" in human.strip().split() or "movies" in human.strip().split())):
@@ -135,13 +147,21 @@ while 1:
         robo = random.choice(("Here comes list of videos :", "Here comes video", "choose your song"))
         robospeak(robo)
 
-        fpath=showfilelist(".mp4")
 
-        print("\n");
-        print("Enter option number");
+        allvideolist=[]
+        fpath,fno=showfilelist(".mp4",1)
+
+        allvideolist.extend(fpath)
+        fpath,fno=showfilelist(".3gp",fno)
+        allvideolist.extend(fpath)
+
+
+        print("\n")
+        print("Enter option number")
 
         human=humaninput()
-        playfile(fpath,human)
+        playfile(allvideolist,human)
+        allvideolist=[]
 
     elif(human in ["stop","bye","no","nothing"]):
         robo = random.choice(("Thank you","I will take your leave","Bye sir","It was nice meeting you"))
