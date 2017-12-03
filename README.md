@@ -24,7 +24,10 @@ software will speak(reply) to you in English.
 # Packages Required :
 
 1] os (inbuild)
+
 2] random (inbuild)
+
 3] espeak
+
 4] webbrowser
 
