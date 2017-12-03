@@ -105,7 +105,7 @@ while 1:
         playfile(fpath,human)
 
 
-    elif(("show" in human.strip().split() or "play" in human.strip().split()) and ("songs" in human.strip().split() or "song" in human.strip().split() or "mp3" in human.strip().split() or "music" in human.strip().split())):
+    elif(("show" in human.strip().split() or "play" in human.strip().split() or "open" in human.strip().split()) and ("songs" in human.strip().split() or "song" in human.strip().split() or "mp3" in human.strip().split() or "music" in human.strip().split())):
         write2file("../dataset/music.txt",human)
 
         robo = random.choice(("Here comes list of songs :", "Here comes list", "choose your song"))
@@ -141,7 +141,7 @@ while 1:
 
 
 
-    elif(("show" in human.strip().split() or "play" in human.strip().split()) and ("videos" in human.strip().split() or "video" in human.strip().split() or "movie" in human.strip().split() or "movies" in human.strip().split())):
+    elif(("show" in human.strip().split() or "play" in human.strip().split() or "open" in human.strip().split()) and ("videos" in human.strip().split() or "video" in human.strip().split() or "movie" in human.strip().split() or "movies" in human.strip().split())):
         write2file("../dataset/video.txt",human)
 
         robo = random.choice(("Here comes list of videos :", "Here comes video", "choose your song"))
@@ -162,6 +162,53 @@ while 1:
         human=humaninput()
         playfile(allvideolist,human)
         allvideolist=[]
+
+
+
+    elif(human in file2list("../dataset/image.txt")):
+        robo=random.choice(("Here comes list of images :","Here comes list","choose your image"))
+        robospeak(robo)
+
+        allvideolist=[]
+        fpath,fno=showfilelist(".jpg",1)
+
+        allvideolist.extend(fpath)
+        fpath,fno=showfilelist(".png",fno)
+        allvideolist.extend(fpath)
+
+
+        print("\n")
+        print("Enter option number")
+
+        human=humaninput()
+        playfile(allvideolist,human)
+
+        allvideolist=[]
+
+
+
+    elif(("show" in human.strip().split() or "play" in human.strip().split() or "open" in human.strip().split()) and ("images" in human.strip().split() or "image" in human.strip().split() or "pics" in human.strip().split() or "pic" in human.strip().split())):
+        write2file("../dataset/image.txt",human)
+
+        robo = random.choice(("Here comes list of images :", "Here comes images", "choose your images"))
+        robospeak(robo)
+
+
+        allvideolist=[]
+        fpath,fno=showfilelist(".jpg",1)
+
+        allvideolist.extend(fpath)
+        fpath,fno=showfilelist(".png",fno)
+        allvideolist.extend(fpath)
+
+
+        print("\n")
+        print("Enter option number")
+
+        human=humaninput()
+        playfile(allvideolist,human)
+        allvideolist=[]
+
 
     elif(human in ["stop","bye","no","nothing"]):
         robo = random.choice(("Thank you","I will take your leave","Bye sir","It was nice meeting you"))

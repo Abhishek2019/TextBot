@@ -1,0 +1,3 @@
+show images list
+open images
+open pics
