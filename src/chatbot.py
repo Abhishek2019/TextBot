@@ -218,21 +218,3 @@ while 1:
     human="run again"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
