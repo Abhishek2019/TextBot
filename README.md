@@ -5,6 +5,7 @@ Program will run in background , and follow your commands.
 The main advantage of this system is that ,you don't have to restrict yourself for particular command for executing task, you can give causual commands.
 
 A) software will speak(reply) to you in English.
+
 B) don't need to update dataset manually.Dataset will automatically include your answer in dataset. 
 
 
